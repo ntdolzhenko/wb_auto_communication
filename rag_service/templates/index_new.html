@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>RAG-модель поддержки</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: vertical;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+
+        textarea:focus {
+            border-color: #5b9bd5;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #5b9bd5;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4176aa;
+        }
+
+        .response-block {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f4f9;
+            border-left: 4px solid #5b9bd5;
+            border-radius: 6px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>RAG-помощник поддержки</h2>
+        <form method="post" action="/ask">
+            <!-- <label for="question">Ваш вопрос:</label><br> -->
+            <textarea id="question" name="question" rows="4" placeholder="Введите Ваш вопрос сюда" required></textarea><br><br>
+            <input type="submit" value="Получить ответ">
+        </form>
+
+        {% if question %}
+            <div class="response-block">
+                <h3>Вопрос:</h3>
+                <p>{{ question }}</p>
+                <h3>Ответ:</h3>
+                <p>{{ answer }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
